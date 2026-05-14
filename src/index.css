@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* CONFIGURAÇÕES MODO ESCURO (DARK) */
+  --bg-color: #02020a;
+  --text-color: #ffffff;
+  --primary: #0000FF;
+  --accent-color: #0000FF;
+  --secondary-bg: #0B112B;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --bg-image: url('/bg-dark.jpg.jpeg'); /* Imagem de fundo modo escuro */
+}
+
+:root.light {
+  /* CONFIGURAÇÕES MODO CLARO (LIGHT) */
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --primary: #0000FF;
+  --accent-color: #0073E6;
+  --secondary-bg: #f8fafc;
+  --card-bg: rgba(0, 0, 92, 0.05);
+  --border-color: rgba(0, 0, 92, 0.1);
+  --bg-image: url('/bg-light.jpg.jpeg'); /* Imagem de fundo modo claro */
+}
+
+@layer base {
+  * {
+    @apply transition-colors duration-700 ease-in-out;
+  }
+  html {
+    /* Lenis handles smooth scroll */
+  }
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  
+  ::selection {
+    background-color: var(--accent-color);
+    color: #ffffff;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-black tracking-tighter;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+}
+
+/* Lenis Scroll Base */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
