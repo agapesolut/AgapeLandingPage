@@ -30,11 +30,17 @@
 
 @layer base {
   * {
-    @apply transition-colors duration-700 ease-in-out;
+    /* Otimização: Aplicando transições apenas em propriedades de cor e reduzindo o escopo se possível */
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: ease-in-out;
+    transition-duration: 700ms;
   }
+  
   html {
-    /* Lenis handles smooth scroll */
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed; /* Foco em performance de renderização */
   }
+
   body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -42,8 +48,28 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    /* Melhora a performance de scroll em dispositivos lentos */
+    overscroll-behavior-y: none; 
   }
   
+  /* Otimização de renderização para seções pesadas */
+  section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px; /* Ajuda o browser a estimar o tamanho antes de renderizar */
+  }
+
+  /* Força aceleração de hardware em elementos com animações frequentes ou blur */
+  .glass-panel, 
+  .backdrop-blur-md, 
+  .backdrop-blur-xl,
+  img, 
+  canvas {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+    will-change: transform, opacity;
+  }
+
   ::selection {
     background-color: var(--accent-color);
     color: #ffffff;

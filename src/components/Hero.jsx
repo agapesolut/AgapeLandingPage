@@ -33,14 +33,16 @@ function WaveCanvas({ isDark }) {
       count += 0.005;
 
       // Draw many horizontal waves to create the "Silk/Wave" effect
-      const lineGap = 25;
-      const waveCount = Math.ceil(h / lineGap) + 10;
+      // Otimização: Aumentado o gap para reduzir o número de linhas desenhadas
+      const lineGap = 35; 
+      const waveCount = Math.ceil(h / lineGap) + 5;
 
       for (let i = 0; i < waveCount; i++) {
         ctx.beginPath();
         const baseY = i * lineGap - 100;
 
-        for (let x = 0; x <= w; x += 10) {
+        // Otimização: Aumentado o step de x de 10 para 25 para reduzir cálculos por frame
+        for (let x = 0; x <= w; x += 25) {
           // Complex wave math for organic movement - constant flow
           const distortion = Math.sin(x * 0.002 + count + i * 0.15) * 40;
           const secondary = Math.cos(x * 0.001 - count * 0.4 + i * 0.25) * 20;

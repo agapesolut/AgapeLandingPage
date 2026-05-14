@@ -62,7 +62,7 @@ function WordReveal({ word, scrollYProgress, start, end }) {
   return (
     <motion.span
       style={{ opacity, y }}
-      className="inline-block"
+      className="inline-block will-change-[transform,opacity]"
     >
       {word}
     </motion.span>
