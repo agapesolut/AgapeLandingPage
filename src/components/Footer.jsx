@@ -59,6 +59,15 @@ const SOCIALS = [
       </svg>
     )
   },
+  {
+    name: 'Whatsapp',
+    href: 'https://wa.me/5500000000000', // Altere para o número real do cliente
+    icon: (props) => (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-13.7 8.38 8.38 0 0 1 3.8.9L21 3l-1.5 4.7a8.38 8.38 0 0 1 .9 3.8z" />
+      </svg>
+    )
+  },
 ];
 
 export default function Footer() {
