@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 
 export default function Navbar() {
@@ -9,6 +9,10 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDark, setIsDark } = useTheme();
+  const location = useLocation();
+
+  // Verifica se estamos na página de cases
+  const isCasesPage = location.pathname === '/cases';
 
   useEffect(() => {
     return scrollY.on('change', (latest) => {
@@ -26,6 +30,23 @@ export default function Navbar() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  // Lógica de cores baseada no scroll, tema e página atual
+  // Na Home (ou outras páginas), sem scroll, o texto é branco (para o Hero escuro)
+  // Na página de Cases, queremos que no modo light o texto seja sempre preto (ou respeite o scroll)
+  const getTextColor = () => {
+    if (isDark) return 'text-white';
+    if (isScrolled) return 'text-black';
+    // Se não houver scroll e estiver no modo light:
+    // Na Home queremos branco (hero escuro), na Cases queremos preto (página clara)
+    return isCasesPage ? 'text-black' : 'text-white';
+  };
+
+  const getLogoClass = () => {
+    if (isDark) return 'brightness-0 invert';
+    if (isScrolled) return '';
+    return isCasesPage ? '' : 'brightness-0 invert';
+  };
+
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
@@ -42,13 +63,13 @@ export default function Navbar() {
           `}>
 
             {/* Logo do Site (Altere o caminho da imagem aqui) */}
-            <a href="#" className="flex items-center group">
+            <a href="/" className="flex items-center group">
               <img 
                 src="/logo2.png" 
                 alt="Ágape Solutions" 
                 className={`
                   h-6 md:h-8 w-auto object-contain transition-all duration-300 group-hover:scale-105
-                  ${(isDark || !isScrolled) ? 'brightness-0 invert' : ''}
+                  ${getLogoClass()}
                 `} 
               />
             </a>
@@ -61,7 +82,7 @@ export default function Navbar() {
                   to={`/${link.href}`}
                   className={`
                     text-[10px] font-sans font-bold transition-all duration-300 uppercase tracking-[0.2em] opacity-90 hover:opacity-100 hover:text-primary
-                    ${(isDark || !isScrolled) ? 'text-white' : 'text-black'}
+                    ${getTextColor()}
                   `}
                 >
                   {link.label}
@@ -74,7 +95,7 @@ export default function Navbar() {
               <button
                 onClick={() => setIsDark(!isDark)}
                 className={`p-2 rounded-full transition-all duration-300 
-                  ${(isDark || !isScrolled) ? 'bg-white/10 text-white hover:bg-primary' : 'bg-black/5 text-black hover:bg-primary hover:text-white'}
+                  ${(isDark || (!isScrolled && !isCasesPage)) ? 'bg-white/10 text-white hover:bg-primary' : 'bg-black/5 text-black hover:bg-primary hover:text-white'}
                   `}
                 aria-label="Toggle theme"
               >
@@ -92,7 +113,7 @@ export default function Navbar() {
               <button
                 onClick={toggleMenu}
                 className={`lg:hidden p-2 rounded-full transition-all duration-300 
-                  ${(isDark || !isScrolled) ? 'text-white' : 'text-black'}
+                  ${getTextColor()}
                 `}
               >
                 {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
