@@ -31,7 +31,7 @@ export default function Form() {
 
   // CONFIGURAÇÕES DO WHATSAPP
   const whatsappConfig = {
-    phone: '5500000000000', // Substitua pelo número real (DDI + DDD + Número)
+    phone: '5543991826259', // Substitua pelo número real (DDI + DDD + Número)
     message: 'Olá! Gostaria de iniciar uma consultoria estratégica.' // Mensagem automática inicial
   };
 
@@ -54,7 +54,7 @@ export default function Form() {
               <span className="text-primary italic">Escalar?</span>
             </h2>
             <p className="text-lg md:text-xl opacity-60 leading-relaxed max-w-md mb-8 md:mb-12">
-              Inicie uma conversa técnica sobre seu próximo grande desafio. Nossa equipe sênior está pronta para analisar sua demanda.
+              Inicie uma conversa técnica sobre seu próximo grande desafio. Nossa equipe está pronta para analisar sua demanda.
             </p>
 
             <div className="space-y-4 md:space-y-6">
@@ -62,7 +62,7 @@ export default function Form() {
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                   <CheckCircle2 size={20} md:size={24} />
                 </div>
-                <span className="font-bold text-base md:text-lg">Análise técnica em 24h</span>
+                <span className="font-bold text-base md:text-lg">Análise técnica em até 48h</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
