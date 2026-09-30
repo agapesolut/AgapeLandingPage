@@ -102,7 +102,7 @@ export default function Navbar() {
               </button>
 
               <a 
-                href="#contact"
+                href="/#contact"
                 className="hidden lg:block px-6 md:px-8 py-2 md:py-3 font-heading font-bold text-[9px] md:text-[10px] uppercase tracking-[0.2em] rounded-full transition-all duration-500 shadow-lg bg-primary text-white hover:scale-105"
               >
                 SOLICITAR ORÇAMENTO
@@ -166,7 +166,7 @@ export default function Navbar() {
                   className="mt-8"
                 >
                   <a 
-                    href="https://agapesolut.com/#contact"
+                    href="/#contact"
                     onClick={() => setIsMenuOpen(false)}
                     className="px-10 py-5 bg-primary text-white font-black text-xs uppercase tracking-[0.2em] rounded-full shadow-2xl"
                   >
