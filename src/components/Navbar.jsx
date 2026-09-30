@@ -166,7 +166,7 @@ export default function Navbar() {
                   className="mt-8"
                 >
                   <a 
-                    href="#contact"
+                    href="https://agapesolut.com/#contact"
                     onClick={() => setIsMenuOpen(false)}
                     className="px-10 py-5 bg-primary text-white font-black text-xs uppercase tracking-[0.2em] rounded-full shadow-2xl"
                   >
