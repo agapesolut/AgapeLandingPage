@@ -1,12 +1,11 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Loader2, MessageCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
 
 export default function Form() {
   const formRef = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [focused, setFocused] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,9 +24,9 @@ export default function Form() {
 
   // CONFIGURAÇÕES DO FORMULÁRIO (Labels, Placeholders e Nomes)
   const fields = [
-    { name: 'user_name', type: 'text', placeholder: 'Nome Completo', label: 'Quem é você?' },
-    { name: 'user_email', type: 'email', placeholder: 'email@empresa.com', label: 'E-mail Corporativo' },
-    { name: 'company', type: 'text', placeholder: 'Nome da Organização', label: 'Sua Empresa' },
+    { name: 'user_name', type: 'text', placeholder: 'Seu nome', label: 'Nome completo' },
+    { name: 'user_email', type: 'email', placeholder: 'voce@empresa.com', label: 'E-mail corporativo' },
+    { name: 'company', type: 'text', placeholder: 'Nome da empresa', label: 'Empresa' },
   ];
 
   // CONFIGURAÇÕES DO WHATSAPP
@@ -78,67 +77,73 @@ export default function Form() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="p-6 md:p-8 border border-[var(--border-color)] bg-primary/[0.02] rounded-[2rem] md:rounded-[2.5rem] max-w-lg w-full lg:ml-auto"
+            className="contact-form-card w-full max-w-xl border border-[var(--border-color)] bg-transparent p-5 sm:p-6 md:p-8 rounded-[1.5rem] md:rounded-[1.75rem] lg:ml-auto"
           >
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
-              {fields.map((field) => (
-                <div key={field.name} className="relative group">
-                  <label className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-primary mb-2 block">
-                    {field.label}
-                  </label>
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    required
-                    placeholder={field.placeholder}
-                    onFocus={() => setFocused(field.name)}
-                    onBlur={() => setFocused(null)}
-                    className="w-full bg-transparent border-b border-[var(--border-color)] py-2 md:py-3 text-base md:text-lg font-bold focus:outline-none focus:border-primary transition-colors placeholder:opacity-20"
-                  />
-                </div>
-              ))}
+            <div className="mb-6 border-b border-[var(--border-color)] pb-5">
+              <span className="mb-2 block text-xs font-semibold text-[var(--text-color)]">Contato</span>
+              <h3 className="font-heading text-xl md:text-2xl font-bold text-[var(--text-color)]">Envie sua mensagem</h3>
+            </div>
 
-              <div className="relative group">
-                <label className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-primary mb-2 block">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {fields.map((field) => (
+                  <div key={field.name} className={field.name === 'company' ? 'sm:col-span-2' : ''}>
+                    <label htmlFor={`contact-${field.name}`} className="mb-2 block text-xs font-semibold text-[var(--text-color)]">
+                      {field.label}
+                    </label>
+                    <input
+                      id={`contact-${field.name}`}
+                      type={field.type}
+                      name={field.name}
+                      required
+                      placeholder={field.placeholder}
+                      className="w-full rounded-xl border border-[var(--border-color)] bg-transparent px-4 py-3 text-sm font-medium text-[var(--text-color)] transition-colors placeholder:text-[var(--text-color)] placeholder:opacity-50 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div>
+                <label htmlFor="contact-message" className="mb-2 block text-xs font-semibold text-[var(--text-color)]">
                   Mensagem
                 </label>
                 <textarea
+                  id="contact-message"
                   name="message"
-                  rows="3"
+                  rows="4"
                   placeholder="Conte-nos sobre seu projeto..."
-                  onFocus={() => setFocused('message')}
-                  onBlur={() => setFocused(null)}
-                  className="w-full bg-transparent border-b border-[var(--border-color)] py-2 md:py-3 text-base md:text-lg font-bold focus:outline-none focus:border-primary transition-colors placeholder:opacity-20 resize-none"
+                  className="w-full resize-y rounded-xl border border-[var(--border-color)] bg-transparent px-4 py-3 text-sm font-medium text-[var(--text-color)] transition-colors placeholder:text-[var(--text-color)] placeholder:opacity-50 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                 />
               </div>
 
-              <div className="flex justify-center">
+              <div className="space-y-4 pt-1">
                 <button
                   type="submit"
                   disabled={isSubmitting || isSuccess}
-                  className="w-fit flex items-center gap-6 px-10 md:px-14 py-4 md:py-5 bg-primary text-white font-black text-[10px] md:text-xs uppercase tracking-[0.3em] rounded-full hover:bg-opacity-90 transition-all disabled:opacity-50 mb-4"
+                  className="group flex min-h-14 w-full items-center justify-between gap-4 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-color)] disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <span>
-                    {isSubmitting ? 'Enviando...' : isSuccess ? 'Mensagem Enviada' : 'Iniciar Consultoria'}
+                  <span aria-live="polite" aria-atomic="true">
+                    {isSubmitting ? 'Enviando...' : isSuccess ? 'Mensagem enviada' : 'Enviar mensagem'}
                   </span>
-                  {isSubmitting ? <Loader2 size={16} md:size={18} className="animate-spin" /> : isSuccess ? <CheckCircle2 size={16} md:size={18} /> : <ArrowRight size={16} md:size={18} />}
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/25 bg-white/10 transition-colors group-hover:bg-white/20" aria-hidden="true">
+                    {isSubmitting ? <Loader2 size={17} className="animate-spin" /> : isSuccess ? <CheckCircle2 size={17} /> : <ArrowRight size={17} className="transition-transform group-hover:translate-x-0.5" />}
+                  </span>
                 </button>
-              </div>
 
-              <div className="py-2">
-                <p className="text-[8px] md:text-[9px] font-black uppercase tracking-widest opacity-30 mb-4 text-center">Conexão Imediata</p>
-                <div className="flex justify-center">
-                  <motion.a
-                    href={whatsappUrl} // URL gerada automaticamente pelas configurações acima
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ y: -2, scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-fit flex items-center justify-center gap-3 px-8 md:px-12 py-4 border border-[#25D366]/20 bg-[#25D366]/[0.03] hover:bg-[#25D366]/10 text-[#25D366] font-black text-[10px] md:text-xs uppercase tracking-[0.3em] rounded-full transition-all group"
-                  >
-                    <MessageCircle size={16} md:size={18} className="group-hover:rotate-12 transition-transform" />
-                    <span>Falar via WhatsApp</span>
-                  </motion.a>
+                <div className="py-2">
+                  <p className="mb-4 text-center text-[9px] font-black uppercase tracking-widest text-[var(--text-color)] opacity-50">
+                    Conexão imediata
+                  </p>
+                  <div className="flex justify-center">
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex w-fit items-center justify-center rounded-full border border-primary/20 bg-primary/[0.03] px-8 py-4 text-center text-[10px] font-black uppercase tracking-[0.3em] text-[var(--text-color)] transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:px-12 md:text-xs"
+                    >
+                      Falar via WhatsApp
+                    </a>
+                  </div>
                 </div>
               </div>
             </form>
@@ -149,4 +154,3 @@ export default function Form() {
     </section>
   );
 }
-

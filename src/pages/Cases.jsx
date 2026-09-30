@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState, useLayoutEffect, useRef } from 'react';
-import { ArrowLeft, ExternalLink, Filter, Search, Globe, Shield, Zap, Database } from 'lucide-react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Grainient from '../components/Grainient';
 import Lenis from 'lenis';
 import { useTheme } from '../context/ThemeContext';
 
@@ -11,19 +12,14 @@ import { useTheme } from '../context/ThemeContext';
 const ALL_CASES = [
   {
     id: 1,
-    title: 'Nexus AI Plataform',
-    category: 'Inteligência de Vendas',
-    tag: 'Retail & AI',
-    description: 'Sistema preditivo que aumentou a conversão em 40% para grandes varejistas brasileiros através de análise comportamental em tempo real.',
-    longDescription: 'A Nexus AI foi desenvolvida para resolver o problema de abandono de carrinho em grandes e-commerces. Utilizando redes neurais recorrentes, a plataforma identifica padrões de hesitação e dispara gatilhos personalizados de retenção, resultando em um aumento direto de receita e fidelização.',
-    stats: [
-      { label: 'Aumento de Conversão', value: '40%' },
-      { label: 'Usuários Ativos', value: '2M+' },
-      { label: 'ROI Estimado', value: '12x' }
-    ],
-    tech: ['PyTorch', 'Next.js', 'Redis', 'AWS SageMaker'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
-    link: 'https://nexus-ai.agapesolutions.com.br'
+    title: 'CRM ELO',
+    category: 'CRM & Gestão Comercial',
+    tag: 'CRM & Gestão Comercial',
+    description: 'CRM em operação para organizar clientes, empresas, contatos e negociações comerciais.',
+    longDescription: 'O ELO centraliza empresas, contatos e negociações em um CRM com funil comercial. A equipe acompanha cada oportunidade por etapa, registra tarefas e follow-ups e consulta documentos comerciais no mesmo sistema.',
+    features: ['Clientes', 'Relacionamento', 'Funil', 'Oportunidades', 'Tarefas', 'Acompanhamento'],
+    image: '/elo-dashboard-dark.png',
+    link: 'https://elo.agapesolut.com/'
   },
   {
     id: 2,
@@ -75,22 +71,21 @@ const ALL_CASES = [
   }
 ];
 
+const TOC_ITEMS = [
+  { id: 'case-1', label: 'CRM ELO', width: '16px' },
+  { id: 'case-2', label: 'AgroScale ERP', width: '28px' },
+  { id: 'case-3', label: 'SecureVault API', width: '20px' },
+  { id: 'case-4', label: 'HealthFlow OS', width: '36px' }
+];
+
 const FloatingTOC = ({ isDark }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
-  // ITENS DO MENU LATERAL (Sincronize os labels com os nomes dos seus cases acima)
-  const items = [
-    { id: 'case-1', label: 'Nexus AI Plataform', width: '16px' },
-    { id: 'case-2', label: 'AgroScale ERP', width: '28px' },
-    { id: 'case-3', label: 'SecureVault API', width: '20px' },
-    { id: 'case-4', label: 'HealthFlow OS', width: '36px' }
-  ];
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 250;
-      for (const item of items) {
+      for (const item of TOC_ITEMS) {
         const element = document.getElementById(item.id);
         if (element) {
           const { offsetTop, offsetHeight } = element;
@@ -113,7 +108,7 @@ const FloatingTOC = ({ isDark }) => {
       onClick={() => setIsHovered(!isHovered)}
     >
       <div className="flex flex-col gap-5 md:gap-5">
-        {items.map((item, i) => (
+        {TOC_ITEMS.map((item, i) => (
           <a
             key={i}
             href={`#${item.id}`}
@@ -160,7 +155,6 @@ const FloatingTOC = ({ isDark }) => {
 };
 
 export default function Cases() {
-  const [filter, setFilter] = useState('Todos');
   const { isDark } = useTheme();
   const topRef = useRef(null);
 
@@ -179,7 +173,7 @@ export default function Cases() {
 
     lenis.scrollTo(0, { immediate: true });
 
-    const id = setTimeout(() => {
+    setTimeout(() => {
       lenis.scrollTo(0, { immediate: true });
       window.scrollTo(0, 0);
     }, 10);
@@ -193,16 +187,42 @@ export default function Cases() {
     return () => lenis.destroy();
   }, []);
 
-  const filteredCases = ALL_CASES;
-
   return (
     <div
       ref={topRef}
       id="cases-top"
-      className={`min-h-screen transition-colors duration-700 bg-[var(--bg-color)] text-[var(--text-color)]`}
+      className={`cases-page min-h-screen transition-colors duration-700 bg-[var(--bg-color)] text-[var(--text-color)]`}
     >
-      <Navbar />
-      <FloatingTOC isDark={isDark} />
+      <div className="cases-page__grainient" aria-hidden="true">
+        <Grainient
+          color1={isDark ? '#000043' : '#d0d0d1'}
+          color2={isDark ? '#003f76' : '#468bc9'}
+          color3={isDark ? '#c1dffa' : '#afd8ff'}
+          timeSpeed={0.25}
+          colorBalance={0}
+          warpStrength={1}
+          warpFrequency={5}
+          warpSpeed={2.1}
+          warpAmplitude={50}
+          blendAngle={0}
+          blendSoftness={0.05}
+          rotationAmount={500}
+          noiseScale={2}
+          grainAmount={0}
+          grainScale={2.1}
+          grainAnimated={false}
+          contrast={1.5}
+          gamma={1}
+          saturation={1}
+          centerX={0}
+          centerY={0}
+          zoom={0.9}
+        />
+      </div>
+
+      <div className="cases-page__content">
+        <Navbar />
+        <FloatingTOC isDark={isDark} />
 
       {/* Hero Section */}
       <section className="relative pt-32 md:pt-40 pb-16 md:pb-20 overflow-hidden">
@@ -232,7 +252,7 @@ export default function Cases() {
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 gap-20 md:gap-32">
-            {filteredCases.map((item, index) => (
+            {ALL_CASES.map((item, index) => (
               <motion.div
                 key={item.id}
                 id={`case-${item.id}`}
@@ -250,15 +270,6 @@ export default function Cases() {
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-60 ${isDark ? 'from-[#000b18]' : 'from-white'}`} />
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="absolute bottom-6 md:bottom-8 right-6 md:right-8 bg-white text-black p-4 md:p-5 rounded-full hover:bg-primary hover:text-white transition-all duration-500 shadow-2xl"
-                    >
-                      <Globe size={20} md:size={24} />
-                    </a>
                   </div>
                 </div>
 
@@ -275,18 +286,20 @@ export default function Cases() {
                   </p>
 
                   {/* Stats Grid */}
-                  <div className={`grid grid-cols-2 sm:grid-cols-3 gap-6 mb-10 p-6 rounded-3xl border transition-colors ${isDark ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'}`}>
-                    {item.stats.map(stat => (
-                      <div key={stat.label}>
-                        <div className="text-xl md:text-2xl font-heading font-black text-primary leading-none mb-1">{stat.value}</div>
-                        <div className={`text-[8px] uppercase font-black tracking-widest ${isDark ? 'text-white/40' : 'text-black/40'}`}>{stat.label}</div>
-                      </div>
-                    ))}
-                  </div>
+                  {item.stats?.length > 0 && (
+                    <div className={`grid grid-cols-2 sm:grid-cols-3 gap-6 mb-10 p-6 rounded-3xl border transition-colors ${isDark ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'}`}>
+                      {item.stats.map(stat => (
+                        <div key={stat.label}>
+                          <div className="text-xl md:text-2xl font-heading font-black text-primary leading-none mb-1">{stat.value}</div>
+                          <div className={`text-[8px] uppercase font-black tracking-widest ${isDark ? 'text-white/40' : 'text-black/40'}`}>{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2">
-                    {item.tech.map(t => (
+                    {(item.features || item.tech).map(t => (
                       <span key={t} className={`px-3 md:px-4 py-2 border rounded-lg text-[8px] md:text-[9px] font-black uppercase tracking-widest transition-colors ${isDark ? 'bg-white/5 border-white/10 text-white/60' : 'bg-black/5 border-black/10 text-black/60'}`}>
                         {t}
                       </span>
@@ -319,7 +332,8 @@ export default function Cases() {
         </div>
       </section>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }
