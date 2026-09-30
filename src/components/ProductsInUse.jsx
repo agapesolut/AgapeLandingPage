@@ -15,20 +15,20 @@ const PRODUCTS = [
     features: ['Clientes e empresas', 'Funil comercial', 'Agenda', 'Tarefas', 'Documentos comerciais']
   },
   {
-    title: 'AgroScale ERP',
-    tag: 'Agribusiness',
-    description: 'Gestão completa de cadeias de suprimentos agroindustriais, otimizando o escoamento de safra com precisão geoespacial.',
+    title: 'PEC Chamadas',
+    tag: 'Painel de chamadas E-SUS PEC',
+    description: 'Painel de chamadas integrado ao E-SUS PEC, sistema de saúde básica do Brasil',
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800',
     link: 'https://agroscale.agapesolutions.com.br',
-    features: ['IoT', 'Cloud ERP', 'Logistics']
+    features: ['Logística', 'Saúde', 'E-SUS']
   },
   {
-    title: 'SecureVault API',
-    tag: 'Fintech & Security',
-    description: 'Camada de segurança bancária para fintechs, processando bilhões de requisições com latência zero e criptografia militar.',
+    title: 'Pede+',
+    tag: 'Comanda digital',
+    description: 'Sistema de comandas digitais integrado a um ERP',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
     link: 'https://securevault.agapesolutions.com.br',
-    features: ['Encryption', 'Zero Latency', 'Compliance']
+    features: ['Getão', 'Logística', 'Agilidade de atendimento']
   }
 ];
 
