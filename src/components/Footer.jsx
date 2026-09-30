@@ -1,7 +1,4 @@
-import { lazy, Suspense } from 'react';
 import DecryptedText from './DecryptedText';
-
-const ShapeBlur = lazy(() => import('./ShapeBlur'));
 
 // LINKS DAS COLUNAS DO RODAPÉ (Altere nomes e links aqui)
 
@@ -79,12 +76,6 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-transparent text-[var(--text-color)] border-t border-[var(--border-color)] overflow-hidden">
-
-      <div className="footer-shape-blur">
-        <Suspense fallback={null}>
-          <ShapeBlur variation={2} />
-        </Suspense>
-      </div>
 
       {/* ── Background Watermark ── */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
