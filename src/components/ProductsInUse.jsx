@@ -18,7 +18,7 @@ const PRODUCTS = [
     title: 'PEC Chamadas',
     tag: 'Painel de chamadas E-SUS PEC',
     description: 'Painel de chamadas integrado ao E-SUS PEC, sistema de saúde básica do Brasil',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800',
+    image: '/Demo_Pec_chamadas.png',
     link: 'https://agroscale.agapesolutions.com.br',
     features: ['Logística', 'Saúde', 'E-SUS']
   },
