@@ -23,33 +23,33 @@ const ALL_CASES = [
   },
   {
     id: 2,
-    title: 'AgroScale ERP',
-    category: 'Logística Avançada',
-    tag: 'Agribusiness',
-    description: 'Gestão completa de cadeias de suprimentos agroindustriais, otimizando o escoamento de safra com precisão geoespacial.',
-    longDescription: 'O AgroScale ERP integra dados de sensores de campo, previsões climáticas e logística de transporte em uma única interface. Ele permite que produtores e cooperativas gerenciem o fluxo de grãos com eficiência máxima, reduzindo perdas logísticas em até 25%.',
+    title: 'PEC - Painel de chamadas',
+    category: 'Logística de atendimento público',
+    tag: 'Painel de chamadas E-SUS PEC',
+    description: 'Painel de chamadas integrado ao E-SUS PEC, sistema de saúde básica do Brasil.',
+    longDescription: 'O Painel de chamadas PEC é integrado ao sistema de saúde básica do governo. O sistema divide-se em dois componentes principais: O Cliente, via extensão de navegador e o Painel moderno e personalizável na Unidade de saúde',
     stats: [
-      { label: 'Eficiência Logística', value: '+25%' },
-      { label: 'Área Coberta', value: '500k ha' },
-      { label: 'Sensores IoT', value: '15k' }
+      { label: 'Latência ', value: '<2ms' },
+      { label: 'Usuários', value: 'ilimitado' },
+      { label: 'Status', value: 'Em Uso' }
     ],
-    tech: ['Go', 'PostgreSQL', 'Grafana', 'IoT Core'],
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800',
-    link: 'https://agroscale.agapesolutions.com.br'
+    tech: ['Node', 'React', 'Electron'],
+    image: '/Demo_Pec_chamadas.png',
+    link: 'https://chromewebstore.google.com/detail/kelmmlegbfbpojoeohedbmfhhfelmmpa?utm_source=item-share-cb'
   },
   {
     id: 3,
-    title: 'SecureVault API',
-    category: 'Infraestrutura Crítica',
-    tag: 'Fintech & Security',
-    description: 'Camada de segurança bancária para fintechs, processando bilhões de requisições com latência zero e criptografia militar.',
-    longDescription: 'Desenvolvido para atender às rigorosas normas do Banco Central, o SecureVault é uma API de criptografia e tokenização que protege dados sensíveis de transações financeiras. Sua arquitetura distribuída garante alta disponibilidade e resiliência contra ataques DDoS.',
+    title: 'Pede+',
+    category: 'Comanda Digital',
+    tag: 'Comanda digital',
+    description: 'Sistema de comandas digitais integrado a um ERP',
+    longDescription: 'O Pede+ é um sistema de controle de pedidos e cozinha para clientes do setor alimentício integrado com um ERP consolidado no mercado. Conta com controle de pedidos, cozinha, produtos e relatórios. Sua interface simples e KDS prático impulsionam a agilidade no atendimento e transparência da gestão',
     stats: [
-      { label: 'Disponibilidade', value: '99.999%' },
-      { label: 'Latência Média', value: '< 15ms' },
-      { label: 'Segurança', value: 'AES-256' }
+      { label: 'Disponibilidade', value: '24/7' },
+      { label: 'Latência Média', value: '< 10ms' },
+      { label: 'ERP', value: 'Integrado' }
     ],
-    tech: ['Rust', 'Kubernetes', 'HSM', 'gRPC'],
+    tech: ['React Native', 'React', 'Electron', 'Java', 'SQLite'],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
     link: 'https://securevault.agapesolutions.com.br'
   },
