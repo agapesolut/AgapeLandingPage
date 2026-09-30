@@ -50,8 +50,8 @@ const ALL_CASES = [
       { label: 'ERP', value: 'Integrado' }
     ],
     tech: ['React Native', 'React', 'Electron', 'Java', 'SQLite'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
-    link: 'https://securevault.agapesolutions.com.br'
+    image: '/KDS_pedemais.png',
+    link: ''
   },
   {
     id: 4,
