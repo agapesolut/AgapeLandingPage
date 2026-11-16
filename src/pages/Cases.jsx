@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import Grainient from '../components/Grainient';
 import Lenis from 'lenis';
 import { useTheme } from '../context/ThemeContext';
+import ProjectGallery from '../components/ProjectGallery';
 
 // LISTA COMPLETA DE CASES (Adicione novos projetos aqui seguindo o mesmo padrão)
 const ALL_CASES = [
@@ -18,7 +19,34 @@ const ALL_CASES = [
     description: 'CRM em operação para organizar clientes, empresas, contatos e negociações comerciais.',
     longDescription: 'O ELO centraliza empresas, contatos e negociações em um CRM com funil comercial. A equipe acompanha cada oportunidade por etapa, registra tarefas e follow-ups e consulta documentos comerciais no mesmo sistema.',
     features: ['Clientes', 'Relacionamento', 'Funil', 'Oportunidades', 'Tarefas', 'Acompanhamento'],
-    image: '/elo-dashboard-dark.png',
+    image: '/elo3.png',
+    galleryName: 'ELO',
+    gallery: [
+      {
+        src: '/elo3.png',
+        title: 'Dashboard',
+        description: 'Os indicadores da operação em uma visão geral.',
+        alt: 'Dashboard do ELO com indicadores, vendas e acompanhamento do funil comercial',
+        width: 3024,
+        height: 1722,
+      },
+      {
+        src: '/elo1.png',
+        title: 'Negociações',
+        description: 'Oportunidades e histórico comercial em um só lugar.',
+        alt: 'Tela de negociações do ELO com clientes, etapas, responsáveis e valores',
+        width: 3024,
+        height: 1724,
+      },
+      {
+        src: '/elo2.png',
+        title: 'Funil comercial',
+        description: 'Cada oportunidade na etapa certa.',
+        alt: 'Funil comercial do ELO com oportunidades organizadas em colunas por etapa',
+        width: 3024,
+        height: 1720,
+      },
+    ],
     link: 'https://elo.agapesolut.com/'
   },
   {
@@ -50,32 +78,42 @@ const ALL_CASES = [
       { label: 'ERP', value: 'Integrado' }
     ],
     tech: ['React Native', 'React', 'Electron', 'Java', 'SQLite'],
-    image: '/KDS_pedemais.png',
-    link: ''
-  },
-  {
-    id: 4,
-    title: 'HealthFlow OS',
-    category: 'Healthtech',
-    tag: 'Medical Systems',
-    description: 'Sistema operacional para hospitais inteligentes que automatiza a triagem e o fluxo de pacientes.',
-    longDescription: 'O HealthFlow utiliza visão computacional e sensores de presença para otimizar o tempo de espera em prontos-socorros. O sistema reduz o tempo médio de atendimento em 35% e elimina erros de registro manual.',
-    stats: [
-      { label: 'Redução de Espera', value: '35%' },
-      { label: 'Hospitais', value: '120+' },
-      { label: 'Precisão', value: '98%' }
+    image: '/pedemais1.png',
+    galleryName: 'Pede+',
+    gallery: [
+      {
+        src: '/pedemais1.png',
+        title: 'Atendimento no salão',
+        description: 'Da abertura da mesa ao envio do pedido para a cozinha.',
+        alt: 'Apresentação da comanda digital do Pede+ com aplicativo do garçom e controle da mesa',
+        width: 3024,
+        height: 1720,
+      },
+      {
+        src: '/pedemais2.png',
+        title: 'Cozinha e expedição',
+        description: 'Acompanhe o preparo e a entrega de cada pedido.',
+        alt: 'Apresentação do KDS do Pede+ com painel de conferência e entrega de pedidos',
+        width: 3024,
+        height: 1710,
+      },
+      {
+        src: '/pedemais3.png',
+        title: 'Gestão e relatórios',
+        description: 'Pedidos, faturamento e indicadores do restaurante.',
+        alt: 'Apresentação dos relatórios do Pede+ com faturamento, ticket médio e tempo de preparo',
+        width: 3024,
+        height: 1720,
+      },
     ],
-    tech: ['Python', 'Docker', 'OpenCV', 'React'],
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
-    link: '#'
+    link: ''
   }
 ];
 
 const TOC_ITEMS = [
   { id: 'case-1', label: 'CRM ELO', width: '16px' },
   { id: 'case-2', label: 'AgroScale ERP', width: '28px' },
-  { id: 'case-3', label: 'SecureVault API', width: '20px' },
-  { id: 'case-4', label: 'HealthFlow OS', width: '36px' }
+  { id: 'case-3', label: 'SecureVault API', width: '20px' }
 ];
 
 const FloatingTOC = ({ isDark }) => {
@@ -264,13 +302,15 @@ export default function Cases() {
               >
                 {/* Image Side */}
                 <div className="w-full lg:w-1/2 group">
-                  <div className={`relative aspect-[16/10] overflow-hidden rounded-[2rem] md:rounded-[3rem] border transition-colors ${isDark ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'}`}>
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
+                  {item.gallery ? <ProjectGallery screens={item.gallery} projectName={item.galleryName} /> : (
+                    <div className={`relative aspect-[16/10] overflow-hidden rounded-[2rem] md:rounded-[3rem] border transition-colors ${isDark ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'}`}>
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
                 </div>
 
                 {/* Content Side */}

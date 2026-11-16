@@ -10,7 +10,7 @@ const PRODUCTS = [
     title: 'CRM ELO',
     tag: 'CRM & Gestão Comercial',
     description: 'CRM em operação para organizar clientes, empresas, contatos e negociações comerciais.',
-    image: '/elo-dashboard-dark.png',
+    image: '/elo3.png',
     link: 'https://elo.agapesolut.com/',
     features: ['Clientes e empresas', 'Funil comercial', 'Agenda', 'Tarefas', 'Documentos comerciais']
   },
@@ -19,15 +19,15 @@ const PRODUCTS = [
     tag: 'Painel de chamadas E-SUS PEC',
     description: 'Painel de chamadas integrado ao E-SUS PEC, sistema de saúde básica do Brasil',
     image: '/Demo_Pec_chamadas.png',
-    link: 'https://agroscale.agapesolutions.com.br',
+    link: 'https://chromewebstore.google.com/detail/pec-chamadas/kelmmlegbfbpojoeohedbmfhhfelmmpa?pli=1',
     features: ['Logística', 'Saúde', 'E-SUS']
   },
   {
     title: 'Pede+',
     tag: 'Comanda digital',
     description: 'Sistema de comandas digitais integrado a um ERP',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
-    link: 'https://securevault.agapesolutions.com.br',
+    image: '/pedemais.png',
+    link: 'https://pedemais.agapesolut.com/',
     features: ['Getão', 'Logística', 'Agilidade de atendimento']
   }
 ];
